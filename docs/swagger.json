@@ -13,5 +13,100 @@
     },
     "host": "localhost:3001",
     "basePath": "/",
-    "paths": {}
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Get API version",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "version"
+                ],
+                "summary": "Get API version",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/my-bike": {
+            "get": {
+                "description": "List details of My Bike",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "listMyBike"
+                ],
+                "summary": "List My Bike",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Bike"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a Bike",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "createMyBike"
+                ],
+                "summary": "Create a Bike",
+                "parameters": [
+                    {
+                        "description": "Bike Object",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Bike"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/main.Bike"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Bike": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "release-year": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        }
+    }
 }

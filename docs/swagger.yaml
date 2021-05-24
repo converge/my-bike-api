@@ -1,4 +1,14 @@
 basePath: /
+definitions:
+  main.Bike:
+    properties:
+      id:
+        type: string
+      release-year:
+        type: string
+      type:
+        type: string
+    type: object
 host: localhost:3001
 info:
   contact: {}
@@ -9,5 +19,56 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Titulo da sua API
   version: "1.0"
-paths: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Get API version
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get API version
+      tags:
+      - version
+  /my-bike:
+    get:
+      consumes:
+      - application/json
+      description: List details of My Bike
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Bike'
+      summary: List My Bike
+      tags:
+      - listMyBike
+    post:
+      consumes:
+      - application/json
+      description: Create a Bike
+      parameters:
+      - description: Bike Object
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/main.Bike'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Bike'
+      summary: Create a Bike
+      tags:
+      - createMyBike
 swagger: "2.0"
