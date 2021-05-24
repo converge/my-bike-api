@@ -68,9 +68,9 @@ func createMyBike(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Bike created!"))
 }
 
-// @title Titulo da sua API
+// @title My Bike API
 // @version 1.0
-// @description Descricão longa da sua API
+// @description API para gerenciar sua Bike
 // @termsOfService http://swagger.io/terms/
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
